@@ -1,31 +1,30 @@
 let price = 400000;
 
-precioSpan = document.querySelector(".precio-inicial");
+precioSpan = document.querySelector(".initialPrice");
 precioSpan.innerHTML = price;
-const precioElemento = document.querySelector(".precio-inicial");
-const cantidadElemento = document.querySelector(".cantidad");
-const totalElemento = document.querySelector(".valor-total");
+const elementPrice = document.querySelector(".initialPrice");
+const elementQuanty = document.querySelector(".quanty");
+const elementTotal = document.querySelector(".totalValue");
+const basePrice = parseFloat(elementPrice.textContent);
 
-const precioBase = parseFloat(precioElemento.textContent);
-
-function actualizarTotal() {
-  const cantidad = parseInt(cantidadElemento.textContent);
-  const total = precioBase * cantidad;
-  totalElemento.textContent = total.toFixed(2);
+function totalUpdate() {
+  const quanty = parseInt(elementQuanty.textContent);
+  const total = basePrice * quanty;
+  elementTotal.textContent = total.toFixed(2);
 }
 
 document.querySelector(".add").addEventListener("click", function () {
-  let cantidad = parseInt(cantidadElemento.textContent);
-  cantidad++;
-  cantidadElemento.textContent = cantidad;
-  actualizarTotal();
+  let quanty = parseInt(elementQuanty.textContent);
+  quanty++;
+  elementQuanty.textContent = quanty;
+  totalUpdate();
 });
 
 document.querySelector(".subtract").addEventListener("click", function () {
-  let cantidad = parseInt(cantidadElemento.textContent);
-  if (cantidad > 0) {
-    cantidad--;
-    cantidadElemento.textContent = cantidad;
-    actualizarTotal();
+  let quanty = parseInt(elementQuanty.textContent);
+  if (quanty > 0) {
+    quanty--;
+    elementQuanty.textContent = quanty;
+    totalUpdate();
   }
 });
